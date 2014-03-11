@@ -212,6 +212,15 @@ a:focus {
   outline: thin dotted #c0392b;
 }
 
+#map h2 {
+  line-height: 20px;
+}
+
+#map a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
 #photo-feed.thumbnails > .span3 {
   height: 350px;
   margin: 5px;
