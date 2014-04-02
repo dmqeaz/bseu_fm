@@ -5,14 +5,7 @@
       {% block main_content %}
         <h2>{{ page.title }}</h2>
 
-        <pre class="prettyprint">
-          <span class="pln">  <a href="http://bseu.by/fm/"><strong>http://bseu.by/fm/</strong></a></span><span class="pln">
-            </span>{% for category, pages in site.categories.items() %}{% if category == site.categories.items()[-1].0 %}<span class="pun">└──</span><span class="pln"> {% if category in ['faculty', 'student', 'applicants'] %}<a href="/{{ category }}">{{ category }}</a>{% else %}{{ category }}{% endif %}</span><span class="pun">/</span><span class="pln">
-                </span>{% for page in pages %}{% if page.title == pages[-1].title %}<span class="pun">└──</span><span class="pln"> <a href="{{ page.url }}">{{ page.title }}</a></span>{% else %}<span class="pun">├──</span><span class="pln"> <a href="{{ page.url }}">{{ page.title }}</a></span><span class="pln">
-                </span>{% endif %}{% endfor %}{% else %}<span class="pun">├──</span><span class="pln"> {% if category in ['faculty', 'student', 'applicants'] %}<a href="/{{ category }}">{{ category }}</a>{% else %}{{ category }}{% endif %}</span><span class="pun">/</span><span class="pln">
-            </span>{% for page in pages %}<span class="pun">│</span><span class="pln">   </span><span class="pun">├──</span><span class="pln"> <a href="{{ page.url }}">{{ page.title }}</a></span><span class="pln">
-            </span>{% endfor %}{% endif %}{% endfor %}
-        </pre>
+        {% include "content/tree.html" %}
       {% endblock %}
     </div>
   </div>
