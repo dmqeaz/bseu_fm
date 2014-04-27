@@ -1,8 +1,36 @@
-<pre class="prettyprint">
-  <span class="pln">  <a href="http://bseu.by/fm/"><strong>http://bseu.by/fm/</strong></a></span><span class="pln">
-    </span>{% for category, pages in site.categories.items() %}{% if category == site.categories.items()[-1].0 %}<span class="pun">└──</span><span class="pln"> {% if category in ['faculty', 'student', 'applicants'] %}<a href="/{{ category }}">{{ category }}</a>{% else %}{{ category }}{% endif %}</span><span class="pun">/</span><span class="pln">
-        </span>{% for page in pages %}{% if page.title == pages[-1].title %}<span class="pun">└──</span><span class="pln"> <a href="{{ page.url }}">{{ page.title }}</a></span>{% else %}<span class="pun">├──</span><span class="pln"> <a href="{{ page.url }}">{{ page.title }}</a></span><span class="pln">
-        </span>{% endif %}{% endfor %}{% else %}<span class="pun">├──</span><span class="pln"> {% if category in ['faculty', 'student', 'applicants'] %}<a href="/{{ category }}">{{ category }}</a>{% else %}{{ category }}{% endif %}</span><span class="pun">/</span><span class="pln">
-    </span>{% for page in pages %}<span class="pun">│</span><span class="pln">   </span><span class="pun">├──</span><span class="pln"> <a href="{{ page.url }}">{{ page.title }}</a></span><span class="pln">
-    </span>{% endfor %}{% endif %}{% endfor %}
-</pre>
+<ul id="mani">
+  {% for _page in site.tags.get('_nav') %}
+    {% if _page.subpages and not _page.category %}
+      <li>
+        <span class="cat">{{ _page.title }}</span>
+        <ul>
+          {% if not "_ignore_nav" in _page.tags %}
+            <li><a href="{{ _page.url }}">{{ _page.title }}</a></li>
+          {% endif %}
+          {% for subpage in _page.subpages %}
+            {% if not "_eng" in subpage.tags %}
+              <li>
+                <a href="{{ subpage.url }}">{{ subpage.title }}</a>
+              </li>
+            {% endif %}
+            {% if subpage.subpages %}
+              {% for subsubpage in subpage.subpages %}
+                <ul>
+                  {% if not "_eng" in subsubpage.tags %}
+                    <li><a href="{{ subsubpage.url }}">{{ subsubpage.title }}</a></li>
+                  {% endif %}
+                </ul>
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </li>
+    {% else %}
+      {% if not _page.category and not _page.url == page.url %}
+        <li>
+          <a class="cat" href="{{ _page.url }}">{{ _page.title }}</a>
+        </li>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</ul>
