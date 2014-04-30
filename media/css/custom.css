@@ -212,23 +212,6 @@ a:focus {
   outline: thin dotted #c0392b;
 }
 
-#map h2 {
-  line-height: 20px;
-}
-
-#map a:hover {
-  color: #fff;
-  text-decoration: none;
-}
-
-.prettyprint {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-}
-
 #photo-feed.thumbnails > .span3 {
   height: 350px;
   margin: 5px;
@@ -337,6 +320,35 @@ h1, h2, h3 {
 
 #rss a:hover {
   color: #fa9b39;
+}
+
+/* Sitemap */
+
+#map h2 {
+  line-height: 20px;
+}
+
+#map a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.cat {
+  font-weight: bold;
+  margin: 10px;
+  display: block;
+}
+
+#tree li {
+  list-style-type: none;
+}
+
+#tree li:hover {
+  cursor: pointer;
+}
+
+#tree > li > ul {
+  display: none;
 }
 
 /* Navigation */
