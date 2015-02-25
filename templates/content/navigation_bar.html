@@ -2,7 +2,7 @@
   {% block navigation %}
     {% if '_nav' in page.tags %}
       <ul class="nav">
-        {% for menu_entry in site.tags.get('_menu')|sort(attribute='menu_index') %}
+        {% for menu_entry in site.tags.get('_menu') | sort(attribute='menu_index') %}
           {% if menu_entry.subpages %}
             <li>
               <span>
